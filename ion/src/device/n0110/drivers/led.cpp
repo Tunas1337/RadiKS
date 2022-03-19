@@ -12,7 +12,7 @@ KDColor updateColorWithPlugAndCharge() {
     if (USB::isPlugged()) {
       ledColor = Battery::isCharging() ? KDColorOrange : KDColorGreen;
     } else {
-      ledColor = KDColorBlue;
+      ledColor = KDColorBlack;
     }
     setColor(ledColor);
   }
