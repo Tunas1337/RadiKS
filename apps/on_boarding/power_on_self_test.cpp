@@ -11,7 +11,7 @@ KDColor PowerOnSelfTest::Perform() {
   // Screen tests
   bool screenTestsOK = Shared::POSTAndHardwareTests::VBlankOK() && (Shared::POSTAndHardwareTests::TextLCDGlyphFailures() <= k_textErrorsLimit);
   // We push a white screen so that the LCD Data test is invisible for the user.
-  Ion::Display::pushRectUniform(KDRect(0, 0, Ion::Display::Width, Ion::Display::Height), KDColorWhite);
+  //Ion::Display::pushRectUniform(KDRect(0, 0, Ion::Display::Width, Ion::Display::Height), KDColorWhite);
   Ion::Display::waitForVBlank();
 
   // Battery test
