@@ -16,6 +16,6 @@ $(BUILD_DIR)/test.external_flash.write.$(EXE): $(BUILD_DIR)/quiz/src/test_ion_ex
 	$(Q) if expr "$(DFU_SLAVE)" : ".*0483:df11.*" > /dev/null; \
 	  then \
 	    $(PYTHON) build/device/dfu.py -u $(word 2,$^); \
-	    sleep 2; \
+	    read -p "echo Press any key to flash the rest of the DFU:\r\n"; \
 	fi
 	$(Q) $(PYTHON) build/device/dfu.py -u $(word 1,$^)
