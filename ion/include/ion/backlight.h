@@ -12,7 +12,7 @@ bool isInitialized();
 void shutdown();
 void setBrightness(uint8_t b);
 uint8_t brightness();
-const int NumberOfStepsPerShortcut = 4;
+//const int NumberOfStepsPerShortcut = 4;
 
 }
 }
