@@ -117,7 +117,6 @@ template<typename T> Evaluation<T> ApproximationHelper::MapReduce(const Expressi
     }
     result = intermediateResult;
     if (result.isUndefined()) {
-      delete result;
       return Complex<T>::Undefined();
     }
   }
