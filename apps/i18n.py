@@ -47,6 +47,7 @@ def source_definition(i18n_string):
             checkForCombining = s[i].isupper()
             result = result + s[i]
         if not has_glyph(s[i]):
+            sys.stderr.write("Error in string " + i18n_string)
             sys.stderr.write(s[i] + " (" + str(hex(ord(s[i]))) + ") is not a character present in " + args.codepoints + " . Exiting !\n")
             sys.exit(-1)
         i = i+1
