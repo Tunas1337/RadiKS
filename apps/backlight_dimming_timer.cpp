@@ -23,13 +23,3 @@ bool BacklightDimmingTimer::fire() {
   }
   return false;
 }
-
-void BacklightDimmingTimer::reset() {
-  m_dimerExecutions = 0;
-  m_period = k_idleBeforeDimmingDuration / Timer::TickDuration;
-  resetTimer();
-}
-
-void BacklightDimmingTimer::resetTimer() {
-  BacklightDimmingTimer::m_numberOfTicksBeforeFire = BacklightDimmingTimer::m_period;
-}
