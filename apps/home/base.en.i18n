@@ -1,4 +1,4 @@
 Apps = "Applications"
-AppsCapital = "TunOS"
+AppsCapital = "RadiKS"
 ForbiddenAppInExamMode1 = "This application is"
 ForbiddenAppInExamMode2 = "forbidden in exam mode"
