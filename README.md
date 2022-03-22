@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/Laporte12974/UpsilonDesign/blob/89a15953ae128aef8aa7d066dcaaf8d5c70f02a5/UPSILogo.png" /></p>
+<p align="center"><img src="https://raw.githubusercontent.com/Tunas1337/RadiKS/radiks-dev/RadiKSLogo.png" /></p>
 
 <p align="center">
   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="cc by-nc-sa 4.0" src="https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-525252.svg?labelColor=292929&logo=creative%20commons&style=for-the-badge" /></a>
@@ -11,12 +11,14 @@
 
 ## About
 
-Upsilon is a fork of Omega, an user-made OS that runs on the Numworks calculator, which brings many features to it, but was discontinued because of a policy change from Numworks. Upsilon is for the people who want to see a future for user-made OSes for Numworks, even after the closure and archiving of Omega.
+RadiKS (*Radi*cal *K*alkulator *S*ystem) is a fork of [Upsilon](https//github.com/Upsilon-Numworks/Upsilon) that seeks to add features that I either liked and cherry-picked from other Epsilon forks, or have coded myself.
+Keep in mind that this is a very lazy fork, intended mostly for personal use, so the instructions on building, while similar to Upsilon, might differ.
 
-
-
-
-### Some new features
+### What's changed from Upsilon
+- Brightness settings menu!
+  - Manually set screen timeout and suspend timeout
+  - Change the brightness steps of the hotkey (Shift+Plus and Shift+Minus)
+### Changes already in Upsilon
 - Enhancements for the Kandinsky python module
 - Support for wallpapers
 - External apps
@@ -24,6 +26,8 @@ Upsilon is a fork of Omega, an user-made OS that runs on the Numworks calculator
 - Operator overload for python
 - Improvements for the Periodic table application
 - *And everything that has been added to Omega before its termination!* [See Omega's changelog here](https://github.com/Omega-Numworks/Omega/wiki/Changelog) | [Main Omega features + screenshots](https://github.com/Omega-Numworks/Omega/wiki/Main-features).
+
+**Everything below is untouched and copied verbatim from Upsilon.**
 
 <br>
 
