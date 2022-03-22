@@ -15,9 +15,7 @@ RadiKS (*Radi*cal *K*alkulator *S*ystem) is a fork of [Upsilon](https//github.co
 Keep in mind that this is a very lazy fork, intended mostly for personal use, so the instructions on building, while similar to Upsilon, might differ.
 
 ### What's changed from Upsilon
-- Brightness settings menu!
-  - Manually set screen timeout and suspend timeout
-  - Change the brightness steps of the hotkey (Shift+Plus and Shift+Minus)
+~~- Brightness settings menu!~~ Merged in [#137](https://github.com/UpsilonNumworks/Upsilon/pull/137)
 ### Changes already in Upsilon
 - Enhancements for the Kandinsky python module
 - Support for wallpapers
