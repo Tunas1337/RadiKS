@@ -21,6 +21,7 @@ namespace Settings
   constexpr SettingsMessageTree s_symbolFunctionChildren[3] = {SettingsMessageTree(I18n::Message::SymbolDefaultFunction), SettingsMessageTree(I18n::Message::SymbolArgDefaultFunction), SettingsMessageTree(I18n::Message::SymbolArgFunction)};
   constexpr SettingsMessageTree s_modelMathOptionsChildren[6] = {SettingsMessageTree(I18n::Message::AngleUnit, s_modelAngleChildren), SettingsMessageTree(I18n::Message::DisplayMode, s_modelFloatDisplayModeChildren), SettingsMessageTree(I18n::Message::EditionMode, s_modelEditionModeChildren), SettingsMessageTree(I18n::Message::SymbolFunction, s_symbolFunctionChildren), SettingsMessageTree(I18n::Message::ComplexFormat, s_modelComplexFormatChildren), SettingsMessageTree(I18n::Message::SymbolMultiplication, s_symbolChildren)};
   constexpr SettingsMessageTree s_accessibilityChildren[6] = {SettingsMessageTree(I18n::Message::AccessibilityInvertColors), SettingsMessageTree(I18n::Message::AccessibilityMagnify), SettingsMessageTree(I18n::Message::AccessibilityGamma), SettingsMessageTree(I18n::Message::AccessibilityGammaRed), SettingsMessageTree(I18n::Message::AccessibilityGammaGreen), SettingsMessageTree(I18n::Message::AccessibilityGammaBlue)};
+  constexpr SettingsMessageTree s_brightnessChildren[4] = {SettingsMessageTree(I18n::Message::Brightness), SettingsMessageTree(I18n::Message::IdleTimeBeforeDimming), SettingsMessageTree(I18n::Message::IdleTimeBeforeSuspend), SettingsMessageTree(I18n::Message::BrightnessShortcut)};
   constexpr SettingsMessageTree s_contributorsChildren[19] = {SettingsMessageTree(I18n::Message::AndrejAntunovikj), SettingsMessageTree(I18n::Message::LaurianFournier), SettingsMessageTree(I18n::Message::YannCouturier), SettingsMessageTree(I18n::Message::DavidLuca), SettingsMessageTree(I18n::Message::LoicE), SettingsMessageTree(I18n::Message::VictorKretz), SettingsMessageTree(I18n::Message::QuentinGuidee), SettingsMessageTree(I18n::Message::JoachimLeFournis), SettingsMessageTree(I18n::Message::MaximeFriess), SettingsMessageTree(I18n::Message::JeanBaptisteBoric), SettingsMessageTree(I18n::Message::SandraSimmons), SettingsMessageTree(I18n::Message::David), SettingsMessageTree(I18n::Message::DamienNicolet), SettingsMessageTree(I18n::Message::EvannDreumont), SettingsMessageTree(I18n::Message::SzaboLevente), SettingsMessageTree(I18n::Message::VenceslasDuet), SettingsMessageTree(I18n::Message::CharlotteThomas), SettingsMessageTree(I18n::Message::AntoninLoubiere), SettingsMessageTree(I18n::Message::CyprienMejat)};
 
 // Code Settings
@@ -31,6 +32,7 @@ namespace Settings
 
   constexpr SettingsMessageTree s_modelAboutChildren[10] = {SettingsMessageTree(I18n::Message::Username), SettingsMessageTree(I18n::Message::UpsilonVersion), SettingsMessageTree(I18n::Message::OmegaVersion), SettingsMessageTree(I18n::Message::SoftwareVersion), SettingsMessageTree(I18n::Message::MicroPythonVersion), SettingsMessageTree(I18n::Message::Battery), SettingsMessageTree(I18n::Message::MemUse), SettingsMessageTree(I18n::Message::SerialNumber), SettingsMessageTree(I18n::Message::FccId), SettingsMessageTree(I18n::Message::Contributors, s_contributorsChildren)};
 
+<<<<<<< HEAD
   MainController::MainController(Responder *parentResponder, InputEventHandlerDelegate *inputEventHandlerDelegate) : ViewController(parentResponder),
                                                                                                                      m_brightnessCell(I18n::Message::Default, KDFont::LargeFont),
                                                                                                                      m_popUpCell(I18n::Message::Default, KDFont::LargeFont),
@@ -49,6 +51,25 @@ namespace Settings
     {
       m_cells[i].setMessageFont(KDFont::LargeFont);
     }
+=======
+MainController::MainController(Responder * parentResponder, InputEventHandlerDelegate * inputEventHandlerDelegate) :
+  ViewController(parentResponder),
+  m_popUpCell(I18n::Message::Default, KDFont::LargeFont),
+  m_selectableTableView(this),
+  m_mathOptionsController(this, inputEventHandlerDelegate),
+  m_brightnessController(this, inputEventHandlerDelegate),
+  m_localizationController(this, Metric::CommonTopMargin, LocalizationController::Mode::Language),
+  m_accessibilityController(this),
+  m_dateTimeController(this),
+  m_codeOptionsController(this),
+  m_examModeController(this),
+  m_aboutController(this),
+  m_preferencesController(this),
+  m_usbInfoController(this)
+{
+  for (int i = 0; i < k_numberOfSimpleChevronCells; i++) {
+    m_cells[i].setMessageFont(KDFont::LargeFont);
+>>>>>>> UpsilonNumworks-upsilon-dev
   }
 
   View *MainController::view()
@@ -56,6 +77,7 @@ namespace Settings
     return &m_selectableTableView;
   }
 
+<<<<<<< HEAD
   void MainController::didBecomeFirstResponder()
   {
     if (selectedRow() < 0)
@@ -109,8 +131,27 @@ namespace Settings
           return true;
         }
         return false;
+=======
+bool MainController::handleEvent(Ion::Events::Event event) {
+  GlobalPreferences * globalPreferences = GlobalPreferences::sharedGlobalPreferences();
+  if (model()->childAtIndex(selectedRow())->numberOfChildren() == 0) {
+    if (model()->childAtIndex(selectedRow())->label() == promptMessage()) {
+      if (event == Ion::Events::OK || event == Ion::Events::EXE || event == Ion::Events::Right) {
+        globalPreferences->setShowPopUp(!globalPreferences->showPopUp());
+        m_selectableTableView.reloadCellAtLocation(m_selectableTableView.selectedColumn(), m_selectableTableView.selectedRow());
+        return true;
+      }
+      return false;
+    }
+    if (model()->childAtIndex(selectedRow())->label() == I18n::Message::Language || model()->childAtIndex(selectedRow())->label() == I18n::Message::Country) {
+      if (event == Ion::Events::OK || event == Ion::Events::EXE || event == Ion::Events::Right) {
+        m_localizationController.setMode(model()->childAtIndex(selectedRow())->label() == I18n::Message::Language ? LocalizationController::Mode::Language : LocalizationController::Mode::Country);
+        stackController()->push(&m_localizationController);
+        return true;
+>>>>>>> UpsilonNumworks-upsilon-dev
       }
     }
+<<<<<<< HEAD
     if (event == Ion::Events::OK || event == Ion::Events::EXE || event == Ion::Events::Right)
     {
       GenericSubController *subController = nullptr;
@@ -155,6 +196,32 @@ namespace Settings
       StackViewController *stack = stackController();
       stack->push(subController);
       return true;
+=======
+  }
+  if (event == Ion::Events::OK || event == Ion::Events::EXE || event == Ion::Events::Right) {
+    GenericSubController * subController = nullptr;
+    I18n::Message title = model()->childAtIndex(selectedRow())->label();
+    if (title == I18n::Message::Brightness || title == I18n::Message::Language) {
+      assert(false);
+    } else if (title == I18n::Message::ExamMode) {
+      subController = &m_examModeController;
+    } else if (title == I18n::Message::About) {
+      subController = &m_aboutController;
+    } else if (title == I18n::Message::BrightnessSettings) {
+      subController = &m_brightnessController;
+    } else if (title == I18n::Message::Accessibility) {
+      subController = &m_accessibilityController;
+    } else if (title == I18n::Message::DateTime) {
+      subController = &m_dateTimeController;
+    } else if (title == I18n::Message::MathOptions) {
+      subController = &m_mathOptionsController;
+    } else if (title == I18n::Message::UsbSetting) {
+      subController = &m_usbInfoController;
+    } else if (title == I18n::Message::CodeApp) {
+      subController = &m_codeOptionsController;
+    } else {
+      subController = &m_preferencesController;
+>>>>>>> UpsilonNumworks-upsilon-dev
     }
     return false;
   }
@@ -173,6 +240,7 @@ namespace Settings
     return Metric::ParameterCellHeight;
   }
 
+<<<<<<< HEAD
   KDCoordinate MainController::cumulatedHeightFromIndex(int j)
   {
     KDCoordinate height = j * rowHeight(0);
@@ -182,6 +250,11 @@ namespace Settings
     }
     return height;
   }
+=======
+KDCoordinate MainController::cumulatedHeightFromIndex(int j) {
+  return j * rowHeight(0);
+}
+>>>>>>> UpsilonNumworks-upsilon-dev
 
   int MainController::indexFromCumulatedHeight(KDCoordinate offsetY)
   {
@@ -208,6 +281,13 @@ namespace Settings
     assert(type == 1);
     return &m_brightnessCell;
   }
+<<<<<<< HEAD
+=======
+  assert(index == 0);
+  assert(type == 2);
+  return &m_popUpCell;
+}
+>>>>>>> UpsilonNumworks-upsilon-dev
 
   int MainController::reusableCellCount(int type)
   {
