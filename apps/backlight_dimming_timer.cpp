@@ -1,25 +1,29 @@
 #include "backlight_dimming_timer.h"
 #include "global_preferences.h"
-#include <ion/backlight.h>
-#include <ion/events.h>
-#include <apps/apps_container.h>
 
 BacklightDimmingTimer::BacklightDimmingTimer() :
-  Timer(GlobalPreferences::sharedGlobalPreferences()->idleBeforeDimmingSeconds()*1000/Timer::TickDuration)
+  Timer(k_idleBeforeDimmingDuration/Timer::TickDuration)
 {
 }
 
 bool BacklightDimmingTimer::fire() {
-  int i = Ion::Backlight::brightness();
-  while (i > 0){
-    int t = 20;
-    Ion::Events::Event e = Ion::Events::getEvent(&t);
-    AppsContainer::sharedAppsContainer()->dispatchEvent(e);
-    if (e.isKeyboardEvent()){
-      return false;
+  if (m_dimerExecutions == 0) {
+    m_brightnessLevel = GlobalPreferences::sharedGlobalPreferences()->brightnessLevel();
+    m_dimerSteps = m_brightnessLevel / decreaseBy;
+    m_timeToSleep = decreasetime / m_dimerSteps;
+    m_period = m_timeToSleep / Timer::TickDuration;
+    if (m_period == 0) {
+      m_period = 1;
     }
-    Ion::Backlight::setBrightness(i);
-    i -= 15;
+    resetTimer();
   }
+  if (m_dimerExecutions < m_dimerSteps) {
+    m_nextbrightness = (m_brightnessLevel-k_dimBacklightBrightness)/m_dimerSteps * (m_dimerSteps-m_dimerExecutions);
+    Ion::Backlight::setBrightness(m_nextbrightness);
+    resetTimer();
+  } else if (m_dimerExecutions == m_dimerSteps) {
+    Ion::Backlight::setBrightness(k_dimBacklightBrightness);
+  }
+  m_dimerExecutions++;
   return false;
 }
