@@ -183,7 +183,7 @@ void __attribute__((noinline)) abort_screen(const char * text){
   KDContext* ctx = KDIonContext::sharedContext();
   ctx->setOrigin(KDPointZero);
   ctx->setClippingRect(screen);
-  ctx->drawString("UPSILON CRASH", KDPoint(90, 10), KDFont::LargeFont, KDColorRed, KDColor::RGB24(0xffffff));
+  ctx->drawString("RADIKS CRASH", KDPoint(90, 10), KDFont::LargeFont, KDColorRed, KDColor::RGB24(0xffffff));
   ctx->drawString("An error occurred", KDPoint(10, 30), KDFont::SmallFont, KDColorBlack, KDColor::RGB24(0xffffff));
   ctx->drawString("If you have some important data, please", KDPoint(10, 45), KDFont::SmallFont, KDColorBlack, KDColor::RGB24(0xffffff));
   ctx->drawString("use bit.ly/upsiBackup to backup them.", KDPoint(10, 60), KDFont::SmallFont, KDColorBlack, KDColor::RGB24(0xffffff));
@@ -192,7 +192,7 @@ void __attribute__((noinline)) abort_screen(const char * text){
   ctx->drawString("reset button at the back of the calculator", KDPoint(10, 125), KDFont::SmallFont, KDColorBlack, KDColor::RGB24(0xffffff));
   ctx->drawString("→ If Upsilon keeps crashing, you can connect", KDPoint(10, 140), KDFont::SmallFont, KDColorBlack, KDColor::RGB24(0xffffff));
   ctx->drawString("the calculator to a computer or a phone", KDPoint(10, 160), KDFont::SmallFont, KDColorBlack, KDColor::RGB24(0xffffff));
-  ctx->drawString("and try to reinstall Upsilon", KDPoint(10, 175), KDFont::SmallFont, KDColorBlack, KDColor::RGB24(0xffffff));
+  ctx->drawString("and try to reinstall RadiKS", KDPoint(10, 175), KDFont::SmallFont, KDColorBlack, KDColor::RGB24(0xffffff));
   ctx->drawString(text, KDPoint(220, 200), KDFont::SmallFont, KDColorRed, KDColor::RGB24(0xffffff));
 }
 
