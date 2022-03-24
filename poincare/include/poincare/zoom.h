@@ -33,7 +33,8 @@ public:
    * between X and Y. Usually used to find the most fitting orthonormal range. */
   static void RangeWithRatioForDisplay(ValueAtAbscissa evaluation, float yxRatio, float * xMin, float * xMax, float * yMin, float * yMax, Context * context, const void * auxiliary);
   static void FullRange(ValueAtAbscissa evaluation, float tMin, float tMax, float tStep, float * fMin, float * fMax, Context * context, const void * auxiliary);
-
+  static void RangeWithRatioForDisplay(ValueAtAbscissa evaluation, float yxRatio, float xMin, float xMax, float yMinForced, float yMaxForced, float * yMin, float * yMax, Context * context, const void * auxiliary);
+  
   /* Find the bounding box of the given ranges. */
   static void CombineRanges(int length, const float * mins, const float * maxs, float * minRes, float * maxRes);
   /* Ensures that the window is fit for display, with all bounds being proper
