@@ -108,7 +108,7 @@ double Solver::BrentRoot(double ax, double bx, double precision, ValueAtAbscissa
   double d = b-a;
   double e = b-a;
   double fa = evaluation(a, context, complexFormat, angleUnit, context1, context2, context3);
-  if (fa == 0) {
+  if (fa == 0.0) {
     // We are looking for a root. If a is already a root, just return it.
     return a;
   }
