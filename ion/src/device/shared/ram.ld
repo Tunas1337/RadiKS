@@ -11,9 +11,9 @@ INCLUDE config/ram.ld
  * region. Per AN2606, sections 31.1 and 36.1, it's using 16Kbytes form address
  * 0x20000000. We'll try to play safe and avoid the first 32KB of RAM.*/
 ASSERT ((CONFIG_OFFSET >= 0), "Error: No room left for ST's bootloader");
-ASSERT ((CONFIG_OFFSET + CONFIG_LENGTH <=  256K - 32K), "Error: CONFIG_OFFSET and CONFIG_LENGTH are not compatible");
+ASSERT ((CONFIG_OFFSET + CONFIG_LENGTH <=  256K - 24K), "Error: CONFIG_OFFSET and CONFIG_LENGTH are not compatible");
 MEMORY {
-  RAM_BUFFER (rw) : ORIGIN = 0x20000000 + 32K + CONFIG_OFFSET, LENGTH = CONFIG_LENGTH
+  RAM_BUFFER (rw) : ORIGIN = 0x20000000 + 24K + CONFIG_OFFSET, LENGTH = CONFIG_LENGTH
 }
 
 /* The stack is quite large: we put it equal to Epsilon's.
