@@ -14,5 +14,5 @@ void Ion::RTC::setDateTime(Ion::RTC::DateTime dateTime) {
 }
 
 Ion::RTC::DateTime Ion::RTC::dateTime() {
-  return Ion::RTC::DateTime { 0, 0, 0, 1, 1, 2000, 6 };
+  return Ion::RTC::DateTime { 37, 34, 10, 24, 3, 2022, 4 };
 }
