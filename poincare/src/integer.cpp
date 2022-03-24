@@ -494,7 +494,7 @@ Integer Integer::multiplication(const Integer & a, const Integer & b, bool oneDi
       /* The fact that aDigit and bDigit are double_native is very important,
        * otherwise the product might end up being computed on single_native size
        * and then zero-padded. */
-      double_native_uint_t p = aDigit*bDigit + carry // Turns out it can.
+      double_native_uint_t p = aDigit*bDigit + carry; // Turns out it can.
       native_uint_t * l = (native_uint_t *)&p;
       if (i+j < (uint8_t) k_maxNumberOfDigits+oneDigitOverflow) {
         p += s_workingBuffer[i+j];
