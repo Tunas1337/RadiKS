@@ -305,8 +305,11 @@ Layout Integer::createLayout(Base base) const {
   if ((int)UTF8Decoder::CharSizeOfCodePoint(buffer[0]) == numberOfChars) {
     UTF8Decoder decoder = UTF8Decoder(buffer);
     return CodePointLayout::Builder(decoder.nextCodePoint());
+  }Layout res = LayoutHelper::String(buffer, numberOfChars);
+  if (base == Base::Decimal) {
+    CodePointLayout::DistributeThousandDisplayType(res, 0, res.numberOfChildren());
   }
-  return LayoutHelper::String(buffer, numberOfChars);
+  return res;
 }
 
 // Approximation

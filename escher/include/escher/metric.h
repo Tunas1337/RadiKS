@@ -19,7 +19,6 @@ public:
   constexpr static KDCoordinate ModalBottomMargin = 18;
   constexpr static KDCoordinate TableCellVerticalMargin = 3;
   constexpr static KDCoordinate TableCellHorizontalMargin = 10;
-  constexpr static KDCoordinate TabHeight = 27;
   constexpr static KDCoordinate ScrollStep = 10;
   constexpr static KDCoordinate PopUpLeftMargin = 27;
   constexpr static KDCoordinate PopUpRightMargin = 27;
@@ -35,7 +34,12 @@ public:
   constexpr static KDCoordinate CellSeparatorThickness = 1;
   constexpr static KDCoordinate TableSeparatorThickness = 5;
   constexpr static KDCoordinate ExpressionViewHorizontalMargin = 5;
+  constexpr static KDCoordinate BannerTextMargin = 2;
   constexpr static KDCoordinate EllipsisCellWidth = 37;
+  constexpr static KDCoordinate OperatorHorizontalMargin = 4;
+  constexpr static KDCoordinate SmallCellMargin = 2;
+  constexpr static KDCoordinate TabHeight = 27;
+  constexpr static KDCoordinate ThousandsSeparatorWidth = 3;
 };
 
 #endif
