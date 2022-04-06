@@ -8,3 +8,5 @@ epsilon.map
 .gradle
 .idea/
 .vs
+upsilon-cppcheck-build-dir
+upsilon.cppcheck
