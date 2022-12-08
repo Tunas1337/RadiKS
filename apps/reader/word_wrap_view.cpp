@@ -668,7 +668,7 @@ bool WordWrapTextView::updateTextColorForward(const char * colorStart) const {
             m_textColor = Palette::Brown;
             keySize = 2;
         }
-        if (*(colorStart+2) == 'l') {
+        else if (*(colorStart+2) == 'l') {
             m_textColor = Palette::BlueLight;
             keySize = 2;
         }
@@ -706,7 +706,11 @@ bool WordWrapTextView::updateTextColorForward(const char * colorStart) const {
 
 bool WordWrapTextView::updateTextColorBackward(const char * colorStart) const {
 
-  if (*(colorStart++) != '\\') {
+  if (*(++colorStart) != '\\') {
+    if (*(colorStart + 1) == '%' || *(colorStart + 2) == '%') {
+      m_textColor = Palette::PrimaryText;
+      return true;
+    }
     return false;
   }
 
@@ -744,7 +748,7 @@ bool WordWrapTextView::updateTextColorBackward(const char * colorStart) const {
             m_textColor = Palette::Brown;
             keySize = 2;
         }
-        if (*(colorStart+2) == 'l') {
+        else if (*(colorStart+2) == 'l') {
             m_textColor = Palette::BlueLight;
             keySize = 2;
         }
